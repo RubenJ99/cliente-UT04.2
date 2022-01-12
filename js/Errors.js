@@ -63,7 +63,7 @@ function InvalidValueException(param, value) {
 InvalidValueException.prototype = Object.create(BaseException.prototype);
 InvalidValueException.prototype.constructor = InvalidValueException;
 //Excepcion tipo objeto invalido
-function InvalidTypeException(param,value) {
+function InvalidTypeException(param, value) {
   let instance = BaseException.call(
     this,
     "Error: The paramenter " +
@@ -83,7 +83,7 @@ InvalidTypeException.prototype = Object.create(BaseException.prototype);
 InvalidTypeException.prototype.constructor = InvalidTypeException;
 
 //Excepcion instancia invalida
-function InvalidInstanceException(param,value) {
+function InvalidInstanceException(param, value) {
   let instance = BaseException.call(
     this,
     "Error: The paramenter " +
@@ -91,7 +91,8 @@ function InvalidInstanceException(param,value) {
       " has an invalid instance type. (" +
       param +
       ": " +
-      'must be: ' + value +
+      "must be: " +
+      value +
       ")"
   );
   instance.name = "InvalidInstanceException";
@@ -105,10 +106,7 @@ InvalidInstanceException.prototype.constructor = InvalidInstanceException;
 
 //Excepcion Index out of bounds
 function IndexOutOfBoundsException() {
-  let instance = BaseException.call(
-    this,
-    "Error: value is out of bounds."
-  );
+  let instance = BaseException.call(this, "Error: value is out of bounds.");
   instance.name = "IndexOutOfBoundsException";
   return instance;
 }
@@ -128,13 +126,22 @@ NonExistentMethodException.prototype = Object.create(BaseException.prototype);
 NonExistentMethodException.prototype.constructor = NonExistentMethodException;
 
 function FullListException() {
-  let instance = BaseException.call(
-    this,
-    "Error: the list is full"
-  );
+  let instance = BaseException.call(this, "Error: the list is full");
   instance.name = "FullListException";
   instance.param = param;
   return instance;
 }
 FullListException.prototype = Object.create(BaseException.prototype);
 FullListException.prototype.constructor = FullListException;
+
+function AbstractClassException(className) {
+  let instance = BaseException.call(
+    this,
+    "Error: The class " + className + " is abstract."
+  );
+  instance.name = "AbstractClassException";
+  instance.className = className;
+  return instance;
+}
+AbstractClassException.prototype = Object.create(BaseException.prototype);
+AbstractClassException.prototype.constructor = AbstractClassException;
