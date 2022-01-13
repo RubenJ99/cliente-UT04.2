@@ -39,13 +39,14 @@
       return oldToString.call(this,name,dni,birth) + ' ::: ' + this.degree + ' ::: ' + this.grade;
     }
   }
+  Student.prototype = Object.create(Person.prototype);
 
   function Professor(name,dni,birth){
     if(!(this instanceof Professor)) throw new InvalidAccessConstructorException();
     abstractCreateLock = false;
     Person.call(this,name,dni,birth);
   }
-
+  Professor.prototype = Object.create(Person.prototype);
 
   abstractCreateLock=true;
   window.Person = Person;
