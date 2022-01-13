@@ -8,7 +8,7 @@
  * @param {*} stg Array en el que se basa el almacenamiento de la lista, no es necesario insertarlo al instanciar la clase,
  * existe para poder relizar correctamente la herencia del campo privado _storage
  */
-function ObjectList(capacity,type,stg = []) {
+function ObjectList(type,capacity=100,stg = []) {
     if (!(this instanceof ObjectList)) throw new InvalidAccessConstructorException();
     if(!type) throw new EmptyValueException('type');
     let _storage = stg;

@@ -7,7 +7,7 @@
  * @param {*} stg Array en el que se basa el almacenamiento de la lista, no es necesario insertarlo al instanciar la clase,
  * existe para poder relizar correctamente la herencia del campo privado _storage
  */
-function List(capacity,stg = []) {
+function List(capacity=100,stg = []) {
   if (!(this instanceof List)) throw new InvalidAccessConstructorException();
   if(!capacity) throw new EmptyValueException('capacity');
   this.capacity = capacity;

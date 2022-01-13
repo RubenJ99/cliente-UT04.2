@@ -7,7 +7,7 @@
  * @param {*} type tipo de objeto(instancia)
  * @param {*} order funcion de ordenacion para esta lista de objetos
  */
-function OrderedObjectList(capacity,type,order) {
+function OrderedObjectList(type,order,capacity=100) {
     if (!(this instanceof OrderedObjectList)) throw new InvalidAccessConstructorException();
     if(!order) throw new EmptyValueException('order');
     let _storage = [];
