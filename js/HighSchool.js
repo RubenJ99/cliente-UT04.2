@@ -1,18 +1,19 @@
 "use strict";
 
 let HighSchool = (function () {
-  let instantiated;
-  function init() {
-    return function (){
-        
+  let instance;
+  function HighSchool(){
+    this.prueba = ()=>{
+      return 'aaa';
     }
   }
   return {
     getInstance: function () {
-      if (!instantiated) {
-        instantiated = init();
+      if (!instance) {
+        instance = new HighSchool();
+        instance.constructor = null;
       }
-      return instantiated;
+      return instance;
     },
   };
 })();
