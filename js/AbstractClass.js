@@ -1,5 +1,11 @@
 'use strict';
 
+const VALID_DEGREES = {
+  'bachelor' : true,
+  'vocational' : true,
+  'others' : true,
+}
+
 (function(){
   let abstractCreateLock = true;
 
@@ -28,7 +34,7 @@
     abstractCreateLock = false;
     Person.call(this,name,dni,birth);
     if(!degree) throw new Error('Empty value');
-    if(!(degree === 'bachelor' || degree === 'vocational' || degree === 'others')) throw new Error('Invalid degree');
+    if(!VALID_DEGREES[degree]) throw new Error('Invalid degree');
     this.degree = degree;
     if(!grade) throw new Error('Empty value');
     if(grade < 0) throw new Error('Invalid grade');
