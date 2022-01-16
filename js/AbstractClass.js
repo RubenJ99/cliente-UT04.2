@@ -1,13 +1,13 @@
 'use strict';
 
-const VALID_DEGREES = {
-  'bachelor' : true,
-  'vocational' : true,
-  'others' : true,
-}
-
 (function(){
   let abstractCreateLock = true;
+
+  window.VALID_DEGREES = {
+    'bachelor' : true,
+    'vocational' : true,
+    'other' : true,
+  }
 
   function Person(name,dni,birth){
     if(abstractCreateLock) throw new AbstractClassException('Person');
@@ -46,6 +46,7 @@ const VALID_DEGREES = {
     }
   }
   Student.prototype = Object.create(Person.prototype);
+  Student.prototype.constructor = Student;
 
   function Professor(name,dni,birth){
     if(!(this instanceof Professor)) throw new InvalidAccessConstructorException();
@@ -53,6 +54,8 @@ const VALID_DEGREES = {
     Person.call(this,name,dni,birth);
   }
   Professor.prototype = Object.create(Person.prototype);
+  Professor.prototype.constructor = Professor;
+
 
   abstractCreateLock=true;
   window.Person = Person;
