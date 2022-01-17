@@ -97,7 +97,7 @@ function List(capacity=100,stg = []) {
    */
   this.indexOf = function (elem) {
     if(!elem) throw new EmptyValueException('elem')
-    return _storage.indexOf(elem);
+    return _storage.find((e)=>{return Object.entries(e).toString() === Object.entries(elem).toString()});
   }
   /**
    * Dado un elemento pasado por parametro como no sabemos si es primitivo o un objeto usamos Arrays.prototype.lastIndexOf

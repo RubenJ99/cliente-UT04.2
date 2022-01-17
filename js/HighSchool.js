@@ -10,19 +10,14 @@ const highSchoolSingleton = (function () {
       name: _name,
       addCourse: function(course){
         if(!(course instanceof Course)) throw new Error('Error instancia');
-        let inArr = Array.from(_storage.toString()).find((elem) => {
-          return elem.name === course.name;
-        });
-        if(inArr) throw new Error('Course already in database');
+        let idx = _storage.indexOf(course);
+        if(idx !== -1) throw new Error('Course already in database');
         _storage.add(course);
       },
       removeCourse: function(course){
-        let idx;
-        let inArr = Array.from(_storage.toString()).find((elem,index) => {
-          idx = index;
-          return elem.name === course.name;
-        });
-        if(!inArr) throw new Error('Course not in database');
+        if(!(course instanceof Course)) throw new Error('Error instancia');
+        let idx = _storage.indexOf(course);
+        if(idx === -1) throw new Error('Course not in database');
         _storage.remove(idx);
       },
       courses:  () => {
