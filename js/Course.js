@@ -27,16 +27,24 @@ function Course(name, students, tutor) {
   Object.defineProperty(this,'admittedStudents',{
       get:() => {
           let admittedList = [];
-          for(let i=0;i<fortyPercent;i++) admittedList.push(_bachelorList[i]);
-          for(let i=0;i<fortyPercent;i++) admittedList.push(_vocationalList[i]);
-          for(let i=0;i<twentyPercent;i++) admittedList.push(_othersList[i]);
-
+          for(let i=0;i<_bachelorList.size();i++){
+            admittedList.push(_bachelorList.get(i));
+            if(i === fortyPercent) break;
+          }
+          for(let i=0;i<_vocationalList.size();i++){
+            admittedList.push(_vocationalList.get(i));
+            if(i === fortyPercent) break;
+          } 
+          for(let i=0;i<_othersList.size();i++){
+            admittedList.push(_othersList.get(i));
+            if(i === twentyPercent) break;
+          } 
 
           let nextIndex = 0;
           return {
               next: () => {
                   return nextIndex <  admittedList.length ? {value: admittedList[nextIndex++],done:false} : {done: true};
-              }
+              },
           }
       }
   });

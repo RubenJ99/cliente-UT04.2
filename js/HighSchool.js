@@ -12,22 +12,25 @@ const highSchoolSingleton = (function () {
         if(!(course instanceof Course)) throw new Error('Error instancia');
         let idx = _storage.indexOf(course);
         if(idx !== -1) throw new Error('Course already in database');
-        _storage.add(course);
+        let newLength =  _storage.add(course);
+        return newLength;
       },
       removeCourse: function(course){
         if(!(course instanceof Course)) throw new Error('Error instancia');
         let idx = _storage.indexOf(course);
         if(idx === -1) throw new Error('Course not in database');
-        _storage.remove(idx);
+        let old =  _storage.remove(idx);
+        return old;
       },
       courses:  () => {
         let nextIndex = 0;
         return {
             next: () => {
-                return nextIndex <  _storage.length ? {value: _storage[nextIndex++],done:false} : {done: true};
-            }
+                return nextIndex <  _storage.size() ? {value: _storage.get(nextIndex++),done:false} : {done: true};
+            },
         }
-      }
+      },
+      peek: () => {return _storage.storage}
     };
   }
   return {
