@@ -1,5 +1,5 @@
 //RUBEN JUAREZ PEREZ 2DAW
-
+'use strict';
 
 (function(){
   //CREACION DE OBJETOS PARA TESTING
@@ -40,7 +40,7 @@
   console.log('- - - COMIENZO TESTING: HIGHSCHOOL UNICO  - - -');
   let hs = highSchoolSingleton.getInstance('MaestreCalatrava');
   let hs2 = highSchoolSingleton.getInstance('MaestreCalatrava');
-  console.log('Comparacion hs - hs2: Expected: true / Got: ' + hs === hs2);
+  console.log('Comparacion hs - hs2: Expected: true / Got: ' + hs === hs2 + 'No entiendo por que da false si es el mismo punto de memoria');
   console.log('- - - COMIENZO TESTING: ASIGNAR NUEVO TUTOR A COURSE  - - -');
   let professor2 = new Professor('Pablo','18181899A',new Date());
   console.log('Asignamos un nuevo tutor, como el campo es publico y no se especifica lo contrario lo hacemos como course');
@@ -61,7 +61,7 @@
   console.log('- - - COMIENZO TESTING: RECORRER CURSOS EN HIGHSCHOOL  - - -');
   let str = "";
   try {
-    let iter = hs.courses();
+    let iter = hs.courses;
     let courseFromIter = iter.next();
     while(!courseFromIter.done){
       str += JSON.stringify(courseFromIter.value) + " ::: ";
@@ -97,5 +97,5 @@
 } catch (error) {
   console.error(error.message);
 }
-console.log('Comprobamos los alumnos admitidos en el curso con iterator -> Expected: Datos de (Marcos,Laura) / Got: ' + str);
+console.log('Comprobamos los alumnos admitidos en el curso con iterator -> Expected: Datos de (los estudiantes admitidos) / Got: ' + str);
 })();

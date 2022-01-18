@@ -145,3 +145,39 @@ function AbstractClassException(className) {
 }
 AbstractClassException.prototype = Object.create(BaseException.prototype);
 AbstractClassException.prototype.constructor = AbstractClassException;
+
+function InvalidRegexException(param) {
+  let instance = BaseException.call(
+    this,
+    "Error: The parameter " + param + " does not match the specified regular expression."
+  );
+  instance.name = "EmptyValueException";
+  instance.param = param;
+  return instance;
+}
+InvalidRegexException.prototype = Object.create(BaseException.prototype);
+InvalidRegexException.prototype.constructor = InvalidRegexException;
+
+function RepeatedArgumentException(param) {
+  let instance = BaseException.call(
+    this,
+    "Error: The parameter " + param + " is already present inside the list."
+  );
+  instance.name = "EmptyValueException";
+  instance.param = param;
+  return instance;
+}
+RepeatedArgumentException.prototype = Object.create(BaseException.prototype);
+RepeatedArgumentException.prototype.constructor = RepeatedArgumentException;
+
+function NotFoundArgumentException(param) {
+  let instance = BaseException.call(
+    this,
+    "Error: The parameter " + param + " is not present inside the list."
+  );
+  instance.name = "EmptyValueException";
+  instance.param = param;
+  return instance;
+}
+NotFoundArgumentException.prototype = Object.create(BaseException.prototype);
+NotFoundArgumentException.prototype.constructor = NotFoundArgumentException;
